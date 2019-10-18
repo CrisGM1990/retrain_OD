@@ -3,6 +3,7 @@ Retrain the YOLO model for your own dataset.
 """
 
 import numpy as np
+import pandas
 import keras.backend as K
 from keras.layers import Input, Lambda
 from keras.models import Model
@@ -14,7 +15,7 @@ from yolo3.utils import get_random_data
 
 
 def _main():
-    annotation_path = 'custom_train.txt'
+    annotation_path = 'custom_train2.txt'
     log_dir = 'custom_logs/000/'
     classes_path = 'model_data/custom_classes.txt'
     #anchors_path = 'model_data/yolo_anchors.txt'
