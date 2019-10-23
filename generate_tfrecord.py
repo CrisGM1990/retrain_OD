@@ -2,10 +2,10 @@
 Usage:
 
 # Create train data:
-python generate_tfrecord.py --label=<LABEL> --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/train_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/train.record
+python generate_tfrecord.py --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/train_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/train.record
 
 # Create test data:
-python generate_tfrecord.py --label=<LABEL> --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/test_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/test.record
+python generate_tfrecord.py --csv_input=<PATH_TO_ANNOTATIONS_FOLDER>/test_labels.csv  --output_path=<PATH_TO_ANNOTATIONS_FOLDER>/test.record
 """
 
 from __future__ import division
@@ -17,7 +17,6 @@ import io
 import pandas as pd
 import tensorflow as tf
 import sys
-sys.path.append("../../models/research")
 
 from PIL import Image
 from object_detection.utils import dataset_util
@@ -26,29 +25,10 @@ from collections import namedtuple, OrderedDict
 flags = tf.app.flags
 flags.DEFINE_string('csv_input', '', 'Path to the CSV input')
 flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
-##### flags.DEFINE_string('label', '', 'Name of class label')
-# if your image has more labels input them as
-# flags.DEFINE_string('label0', '', 'Name of class[0] label')
-# flags.DEFINE_string('label1', '', 'Name of class[1] label')
-# and so on.
 flags.DEFINE_string('img_path', '', 'Path to images')
 FLAGS = flags.FLAGS
 
 
-# TO-DO replace this with label map
-# for multiple labels add more else if statements
-"""
-def class_text_to_int(row_label):
-    if row_label == FLAGS.label:  # 'ship':
-        return 1
-    # comment upper if statement and uncomment these statements for multiple labelling
-    # if row_label == FLAGS.label0:
-    #   return 1
-    # elif row_label == FLAGS.label1:
-    #   return 0
-    else:
-        None
-"""
 def class_text_to_int(row_label):
     if row_label == 'sabritas':
         return 0
