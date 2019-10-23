@@ -1,0 +1,19 @@
+item {
+    id: 1
+    name: 'sabritas'
+}
+
+item {
+    id: 2
+    name: 'doritos'
+}
+
+item {
+    id: 3
+    name: 'ruffles'
+}
+
+item {
+    id: 4
+    name: 'cheetos'
+}
